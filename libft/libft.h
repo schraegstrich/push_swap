@@ -6,7 +6,7 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:33:37 by lkirillo          #+#    #+#             */
-/*   Updated: 2023/11/29 13:50:45 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:03:25 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, int len);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
+int		ft_strcmp(const char *str1, const char *str2);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strlen(const char *str);
 int		ft_strlcpy(char *dst, const char *src, size_t dstsize);

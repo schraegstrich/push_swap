@@ -6,7 +6,7 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:51:08 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/08 18:10:19 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:04:47 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 //to do: comment out stdio.h after checking
 # include <stdlib.h>
 
-
-int	*swap_a(int *stack_a, int top, int ss);
-int	*swap_b(int *stack_b, int top, int ss);
-
+int	ft_error(char *str);
+int	*swap(int *stack, int top, char *op_print);
+int	*rotate(int *stack, int top, char *op_print);
+int	*reverse_rotate(int *stack, int top, char *op_print);
+int	*push(int *src, int *dst, char *op_print);
 #endif

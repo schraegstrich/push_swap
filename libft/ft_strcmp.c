@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 18:15:28 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/08 18:26:48 by lkirillo         ###   ########.fr       */
+/*   Created: 2023/11/07 17:10:04 by lkirillo          #+#    #+#             */
+/*   Updated: 2024/03/12 15:56:29 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-//think about memory management when enlarging or decreasing stack
-int	*smol_stack(int *old_stack, int top)
+#include "libft.h"
+
+int	ft_strcmp(const char *str1, const char *str2)
 {
-	int *new_stack;
+	size_t	i;
+
+	i = 0;
+	while (str1[i] != '\0' || str2[i] != '\0')
+	{
+		if (str1[i] != str2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		i++;
+	}
+	return (0);
 }
-int *increase_stack(int *old_stack, int top)
