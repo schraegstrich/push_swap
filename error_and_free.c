@@ -1,41 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   error_and_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:50:56 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/12 17:30:21 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:43:54 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//possible errors:
-//duplicates
+//possible errors still not handled:
+//question: in my implementation 001 is accepted but -001 and +001 are errors - right?
 
-//maybe make indicator and if it is bigger than 1 then we have a problem
-int	*ft_strchr(const int *array, int c)
+//free in case of error and say bye
+void free_and_exit(int *stack_a, int *stack_b)
 {
+	free(stack_a);
+	free(stack_b);
+	exit(0);
+}
+
+//error based on the whole stack:
+//duplication error
+int	duplication_error(int *array, int c)
+{
+	int dup;
+	
+	dup = -1;
 	while (*array)
 	{
 		if (*array == c)
-			return ((int *)array);
+			dup++;;
 		array++;
 	}
-	return (NULL);
+	if (dup > 0)
+	{
+		printf("Error\n");
+		return(1);
+	}
+	return(0);
+
 }
 
-int	ft_error(char *str)
+//errors based on singular element:
+//bigger than int max 
+//or smaller than int min
+//or not an int && handling -0 or +0 or 0 as not an error
+//duplicate + or -
+
+int	argument_error(char *str)
 {
-	//bigger than int max 
-	//or smaller than int min
-	//or not an int && handling -0 or +0 or 0 as not an error
-	
 	if ((ft_atoi(str) == -2147483647 && ft_strcmp(str, "-2147483647")) ||
 	(ft_atoi(str) == 2147483647 && ft_strcmp(str, "2147483647"))||
-	(ft_atoi(str) == 0 && ft_strcmp(str, "-0") && ft_strcmp(str, "+0") && ft_strcmp(str, "0")))
+	(ft_atoi(str) == 0 && ft_strcmp(str, "-0") && ft_strcmp(str, "+0") && ft_strcmp(str, "0")) ||
+	((str[0] == '-' || str[0] == '+') && (!(str[1] >= '1' && str[1] <= '9')))) 
 	{
 		printf("Error\n");
 		return(1);
