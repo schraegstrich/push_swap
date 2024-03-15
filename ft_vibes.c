@@ -6,12 +6,13 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:28:22 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/13 17:17:31 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:00:13 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//accepts 1 -1 2 as sorted dafuq
 int is_sorted(int *stack_a, int top)
 {
 	int temp;
@@ -23,6 +24,7 @@ int is_sorted(int *stack_a, int top)
 	{
 		if (temp < stack_a[top - 1])
 			temp = stack_a[top - 1];
+			
 		top--;
 	}
 	if (temp == stack_a[0])
@@ -35,7 +37,7 @@ int	*sort_stack(int *stack_a, int *stack_b, int top)
 {
 	if(is_sorted(stack_a, top))
 	{
-		printf("I am sorted bruh\n"); // temporary checker
+		printf("I am sorted or empty bruh\n"); // temporary checker
 		free_and_exit(stack_a, stack_b);
 	}
 	return(stack_a);

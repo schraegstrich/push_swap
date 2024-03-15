@@ -6,7 +6,7 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:50:56 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/13 16:43:54 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:41:05 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int	duplication_error(int *array, int c)
 }
 
 //errors based on singular element:
-//bigger than int max 
-//or smaller than int min
+//bigger than int max - double check
+//or smaller than int min - double check
 //or not an int && handling -0 or +0 or 0 as not an error
 //duplicate + or -
 
 int	argument_error(char *str)
 {
-	if ((ft_atoi(str) == -2147483647 && ft_strcmp(str, "-2147483647")) ||
+	if ((ft_atoi(str) == -2147483648 && ft_strcmp(str, "-2147483648")) || //check if it works with all cases
 	(ft_atoi(str) == 2147483647 && ft_strcmp(str, "2147483647"))||
 	(ft_atoi(str) == 0 && ft_strcmp(str, "-0") && ft_strcmp(str, "+0") && ft_strcmp(str, "0")) ||
 	((str[0] == '-' || str[0] == '+') && (!(str[1] >= '1' && str[1] <= '9')))) 
