@@ -6,14 +6,15 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:50:56 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/15 15:41:05 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:48:46 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 //possible errors still not handled:
-//question: in my implementation 001 is accepted but -001 and +001 are errors - right?
+//dafuq it works with 1.5 and , and dafuq and signs after number
+//to fix: when argv is a string with multiple numbers only the first one is read
 
 //free in case of error and say bye
 void free_and_exit(int *stack_a, int *stack_b)
@@ -46,20 +47,41 @@ int	duplication_error(int *array, int c)
 }
 
 //errors based on singular element:
-//bigger than int max - double check
-//or smaller than int min - double check
-//or not an int && handling -0 or +0 or 0 as not an error
+//smaller than int min or bigger than int max
+//not an int
+// zeros before number for no reason 
 //duplicate + or -
 
 int	argument_error(char *str)
 {
-	if ((ft_atoi(str) == -2147483648 && ft_strcmp(str, "-2147483648")) || //check if it works with all cases
-	(ft_atoi(str) == 2147483647 && ft_strcmp(str, "2147483647"))||
-	(ft_atoi(str) == 0 && ft_strcmp(str, "-0") && ft_strcmp(str, "+0") && ft_strcmp(str, "0")) ||
-	((str[0] == '-' || str[0] == '+') && (!(str[1] >= '1' && str[1] <= '9')))) 
+	if ((ft_atoi(str) < 0 && str[0] != '-') || (ft_atoi(str) > 0 && str[0] == '-')||
+	(ft_atoi(str) == 0 && str[0] != '0') ||
+	(str[0] == '0' && ft_atoi(str) != 0) ||
+	((str[0] == '-' || str[0] == '+') && (!(str[1] >= '1' && str[1] <= '9'))))
 	{
 		printf("Error\n");
 		return(1);
 	}
+	return(0);
+}
+
+int is_sorted(int *stack_a, int top)
+{
+	int temp;
+	
+	if (top == 0)
+		return (1);
+	temp = stack_a[top];
+
+	while(top >= 1)
+	{
+		if (temp < stack_a[top - 1]) 
+			temp = stack_a[top - 1];
+		else
+			break ;
+		top--;
+	}
+	if (temp == stack_a[0])
+		return (1);
 	return(0);
 }

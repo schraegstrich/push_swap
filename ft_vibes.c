@@ -6,42 +6,11 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:28:22 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/15 16:00:13 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:12:02 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//accepts 1 -1 2 as sorted dafuq
-int is_sorted(int *stack_a, int top)
-{
-	int temp;
-
-	if (top == 0)
-		return (1);
-	temp = stack_a[top];
-	while(top >= 1)
-	{
-		if (temp < stack_a[top - 1])
-			temp = stack_a[top - 1];
-			
-		top--;
-	}
-	if (temp == stack_a[0])
-		return (1);
-	return(0);
-}
-
-//maybe create stack b here and not in main???
-int	*sort_stack(int *stack_a, int *stack_b, int top)
-{
-	if(is_sorted(stack_a, top))
-	{
-		printf("I am sorted or empty bruh\n"); // temporary checker
-		free_and_exit(stack_a, stack_b);
-	}
-	return(stack_a);
-}
 
 //to fix: when argv is a string with multiple numbers only the first one is read
 int	main (int argc, char **argv)
@@ -58,7 +27,8 @@ int	main (int argc, char **argv)
 	argv_counter = 1;
 	if (argc > 1)
 	{
-		top = argc - 2;
+		top = argc - 2;	
+		//idea - exit here if top is 0 and argv1 is not a string with spaces
 		stack_a = malloc((top + 1) * sizeof(int));
 		if(!stack_a)
 			return(0);
@@ -79,10 +49,29 @@ int	main (int argc, char **argv)
 				free_and_exit(stack_a, stack_b);
 			top++;
 		}
+		top--;
+		if (is_sorted(stack_a, top))
+			free_and_exit(stack_a, stack_b);
+		if (top == 1)
+		{
+			swap(stack_a, top, "sa");
+			free_and_exit(stack_a, stack_b);
+		}
+		if (top == 2)
+		{
+			sort_three(stack_a);
+			while(top >= 0)
+			{
+				printf("%d\n", stack_a[top]);
+				top--;
+			}
+			free_and_exit(stack_a, stack_b);
+		}
+		
 	}
-	stack_a = sort_stack(stack_a, stack_b, top);
+	
 	//temporary here to check if operations work
-	printf("stack a before rules is:\n");
+	/*printf("stack a before rules is:\n");
 	top = argc - 2;
 	while(top >= 0)
 	{
@@ -96,13 +85,7 @@ int	main (int argc, char **argv)
 	{
 		printf("%d\n", stack_b[top]);
 		top--;
-	}
-	printf("new stack a is:\n");
-	top = argc - 3;
-	while(top >= 0)
-	{
-		printf("%d\n", stack_a[top]);
-		top--;
-	}
+	}*/
+	//printf("not supposed to happen");
 	return(0);
 }
