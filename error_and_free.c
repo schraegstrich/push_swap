@@ -6,14 +6,13 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:50:56 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/18 18:48:46 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:52:22 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 //possible errors still not handled:
-//dafuq it works with 1.5 and , and dafuq and signs after number
 //to fix: when argv is a string with multiple numbers only the first one is read
 
 //free in case of error and say bye
@@ -51,6 +50,7 @@ int	duplication_error(int *array, int c)
 //not an int
 // zeros before number for no reason 
 //duplicate + or -
+//random symbols after number
 
 int	argument_error(char *str)
 {
@@ -58,6 +58,15 @@ int	argument_error(char *str)
 	(ft_atoi(str) == 0 && str[0] != '0') ||
 	(str[0] == '0' && ft_atoi(str) != 0) ||
 	((str[0] == '-' || str[0] == '+') && (!(str[1] >= '1' && str[1] <= '9'))))
+	{
+		printf("Error\n");
+		return(1);
+	}
+	while (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+		str++;
+	if (*str != '\0')
 	{
 		printf("Error\n");
 		return(1);
