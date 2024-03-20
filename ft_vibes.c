@@ -6,7 +6,7 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:28:22 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/18 18:12:02 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:46:52 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ int	main (int argc, char **argv)
 		if (top == 2)
 		{
 			sort_three(stack_a);
-			while(top >= 0)
-			{
-				printf("%d\n", stack_a[top]);
-				top--;
-			}
 			free_and_exit(stack_a, stack_b);
 		}
-		
+		if (top > 2)
+		{
+			printf("i am here bruh\n");
+			sort_more(stack_a, stack_b, top);
+
+		}
 	}
 	
 	//temporary here to check if operations work

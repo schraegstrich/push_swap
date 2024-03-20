@@ -6,7 +6,7 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 16:31:53 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/12 15:12:54 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:58:03 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,16 @@ int	*swap(int *stack, int top, char *op_print)
 //pa, pb
 //question: how to keep the top value up to date in the "main" function?
 //decrement top-- in the main file every time this function is called? better solution?
-int	*push(int *src, int *dst, char *op_print)
+int	*push(int *src, int *dst, int top, char *op_print)
 {
-	int	top_src;
 	int	i;
 	
 	if(!src)
 		exit(0);
-	top_src = 0;
-	while (src[top_src])
-		top_src++;
-	top_src--;
 	i = 0;
 	while(dst[i])
 		i++;
-	dst[i] = src[top_src];
+	dst[i] = src[top];
 	printf("%s\n", op_print);
 	return(dst);
 }
