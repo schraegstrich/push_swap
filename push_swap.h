@@ -6,7 +6,7 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:51:08 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/20 19:00:04 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:11:02 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 //to do: comment out stdio.h after checking
 # include <stdlib.h>
+# include <unistd.h>
 //error handling
 int	argument_error(char *str);
 int	duplication_error (int *array, int c);

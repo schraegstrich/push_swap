@@ -6,7 +6,7 @@
 /*   By: lkirillo <lkirillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:39:05 by lkirillo          #+#    #+#             */
-/*   Updated: 2024/03/20 18:59:35 by lkirillo         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:25:46 by lkirillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,15 @@ void sort_more(int *stack_a, int *stack_b, int top)
 {
 	int	temp;
 	int save_top;
+	int i;
 	int median;
 	
 	temp = stack_a[0];
 	save_top = top;
+	i = 0;
 	median = find_median(stack_a, top);
 	printf("i came here\n");
-	while (top >= 0)
+	while (top > 0)
 	{
 		if(stack_a[top] < median)
 		{
@@ -63,11 +65,13 @@ void sort_more(int *stack_a, int *stack_b, int top)
 		else
 		{
 			stack_a = rotate(stack_a, top, "ra");
-			if (stack_a[0] == temp && (top != save_top))
+			i++;
+			if (i == save_top)
 				break ;
 		}
+		printf("pls work bruh %d\n", stack_a[0]);
 	}
-	printf("new stack a is:\n");
+	write(1,"new stack a is\n", 16);
 	while(top >= 0)
 	{
 		printf("%d\n", stack_a[top]);
